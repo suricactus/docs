@@ -1,0 +1,1553 @@
+
+<!doctype html>
+<html lang="bg" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+      <link rel="shortcut icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.1.2, mkdocs-material-6.2.6">
+    
+    
+      
+        <title>05. Събиране на данни - QGIS.бг докс</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.cb6bc1d0.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.39b8e14a.min.css">
+        
+      
+    
+    
+    
+      
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&display=fallback">
+        <style>body,input{font-family:"Roboto",-apple-system,BlinkMacSystemFont,Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"Roboto Mono",SFMono-Regular,Consolas,Menlo,monospace}</style>
+      
+    
+    
+    
+      <link rel="stylesheet" href="../../assets/consent.css">
+    
+    
+      
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="green" data-md-color-accent="green">
+      
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#_1" class="md-skip">
+          Към съдържанието
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header-nav md-grid" aria-label="Горен колонтитул">
+    <a href="../.." title="QGIS.бг докс" class="md-header-nav__button md-logo" aria-label="QGIS.бг докс">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 003-3 3 3 0 00-3-3 3 3 0 00-3 3 3 3 0 003 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
+
+    </a>
+    <label class="md-header-nav__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"/></svg>
+    </label>
+    <div class="md-header-nav__title" data-md-component="header-title">
+      <div class="md-header-nav__ellipsis">
+        <div class="md-header-nav__topic">
+          <span class="md-ellipsis">
+            QGIS.бг докс
+          </span>
+        </div>
+        <div class="md-header-nav__topic">
+          <span class="md-ellipsis">
+            
+              05. Събиране на данни
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      <label class="md-header-nav__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0116 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 019.5 16 6.5 6.5 0 013 9.5 6.5 6.5 0 019.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+      </label>
+      
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Търси" placeholder="Търси" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" data-md-state="active" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0116 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 019.5 16 6.5 6.5 0 013 9.5 6.5 6.5 0 019.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+      </label>
+      <button type="reset" class="md-search__icon md-icon" aria-label="Изчисти" data-md-component="search-reset" tabindex="-1">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/></svg>
+      </button>
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header-nav__source">
+        
+<a href="https://github.com/qgisbg/docs/" title="Към хранилището" class="md-source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M439.55 236.05L244 40.45a28.87 28.87 0 00-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 01-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 000 40.81l195.61 195.6a28.86 28.86 0 0040.8 0l194.69-194.69a28.86 28.86 0 000-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+      </div>
+    
+  </nav>
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+<nav class="md-tabs" aria-label="Табове" data-md-component="tabs">
+  <div class="md-tabs__inner md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+
+
+  <li class="md-tabs__item">
+    <a href="../.." class="md-tabs__link">
+      Начало
+    </a>
+  </li>
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../wiki/formats/0000_kakvo_e_csv/" class="md-tabs__link">
+        Уики
+      </a>
+    </li>
+  
+
+  
+
+      
+        
+  
+  
+    
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../01_preamble/" class="md-tabs__link md-tabs__link--active">
+        Увод в ГИС
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../bgd/1000_awesome/" class="md-tabs__link">
+        БГД кибер
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../meta/1000_broken_tutorial/" class="md-tabs__link">
+        QGIS.бг мета
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Навигация" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="QGIS.бг докс" class="md-nav__button md-logo" aria-label="QGIS.бг докс">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 003-3 3 3 0 00-3-3 3 3 0 00-3 3 3 3 0 003 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
+
+    </a>
+    QGIS.бг докс
+  </label>
+  
+    <div class="md-nav__source">
+      
+<a href="https://github.com/qgisbg/docs/" title="Към хранилището" class="md-source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M439.55 236.05L244 40.45a28.87 28.87 0 00-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 01-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 000 40.81l195.61 195.6a28.86 28.86 0 0040.8 0l194.69-194.69a28.86 28.86 0 000-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        Начало
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="nav-2" type="checkbox" id="nav-2" >
+      
+      <label class="md-nav__link" for="nav-2">
+        Уики
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Уики" data-md-level="1">
+        <label class="md-nav__title" for="nav-2">
+          <span class="md-nav__icon md-icon"></span>
+          Уики
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+          
+            
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="nav-2-1" type="checkbox" id="nav-2-1" >
+      
+      <label class="md-nav__link" for="nav-2-1">
+        Формати
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Формати" data-md-level="2">
+        <label class="md-nav__title" for="nav-2-1">
+          <span class="md-nav__icon md-icon"></span>
+          Формати
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../wiki/formats/0000_kakvo_e_csv/" class="md-nav__link">
+        Какво е CSV (си-ес-ви)?
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../wiki/formats/0000_kakvo_e_geojson/" class="md-nav__link">
+        Какво е Geojson (геоджейсон)?
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../wiki/formats/0000_kakvo_e_markdown/" class="md-nav__link">
+        Какво е Markdown (маркдаун)?
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../wiki/formats/0000_kakvo_e_shapefile/" class="md-nav__link">
+        Какво е shapefile (шейпфайл)?
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../wiki/formats/0000_kakvo_e_topojson/" class="md-nav__link">
+        Какво е topojson (топоджейсон)?
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../wiki/formats/0000_koi_vektoren_format_da_izbera/" class="md-nav__link">
+        Кой векторен формат да избера за моите данни?
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="nav-2-2" type="checkbox" id="nav-2-2" >
+      
+      <label class="md-nav__link" for="nav-2-2">
+        QGIS рецепти
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="QGIS рецепти" data-md-level="2">
+        <label class="md-nav__title" for="nav-2-2">
+          <span class="md-nav__icon md-icon"></span>
+          QGIS рецепти
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../wiki/qgis/0000_kak_da_dobavim_nov_atribut/" class="md-nav__link">
+        Как да добавя атрибут във векторен слой?
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../wiki/qgis/0000_kak_da_instalirame_qgis_v_ubuntu/" class="md-nav__link">
+        Как да инсталирам QGIS в Debian/Ubuntu?
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../wiki/qgis/0000_kak_da_instalirame_qgis_v_windows/" class="md-nav__link">
+        Как да инсталирам QGIS в Windows?
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../wiki/qgis/0000_kak_da_izteglya_dannin_ot_osm/" class="md-nav__link">
+        Как да използвам данни от OpenStreetMap?
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../wiki/qgis/0000_kak_da_pokazhem_samo_chast_ot_obektite/" class="md-nav__link">
+        Как да покажем само част от обектите в слоя?
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../wiki/qgis/0000_kak_da_pomogna_na_qgis/" class="md-nav__link">
+        Как да помогна в развитието на QGIS?
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../wiki/qgis/0000_kak_da_popravya_prevod_v_qgis/" class="md-nav__link">
+        Как да поправя грешен превод в QGIS?
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../wiki/qgis/0000_kak_da_sazdam_sloy_chernova/" class="md-nav__link">
+        Как да създам слой чернова и да добавя точки в него?
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../wiki/qgis/0000_kak_da_sleem_dva_obekta_v_edin/" class="md-nav__link">
+        Как да слея два обекта в QGIS?
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../wiki/qgis/0000_kak_da_sleem_dva_sloya_v_edin/" class="md-nav__link">
+        Как да слея два слоя в един?
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../wiki/qgis/0000_kak_da_smenim_proektsiyata/" class="md-nav__link">
+        Как да сменя проекцията на слой?
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../wiki/qgis/0000_kak_da_zapisha_samo_chast_ot_obektite_v_daden_sloy/" class="md-nav__link">
+        Как да запиша само част от обектите в нов слой?
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../wiki/qgis/0000_kakva_e_razlikata_mezhdu_qgs_i_qgz/" class="md-nav__link">
+        Каква е разликата между .qgs и .qgz?
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../wiki/qgis/0000_kakvo_da_napravya_ako_otkriya_bug/" class="md-nav__link">
+        Какво да направя, ако открия бъг в QGIS?
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../wiki/qgis/0000_kakvo_moga_da_pravq_v_atributivnata_tablitsa/" class="md-nav__link">
+        Как да приложа стилове на атрибутивната таблица?
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="nav-3" type="checkbox" id="nav-3" checked>
+      
+      <label class="md-nav__link" for="nav-3">
+        Увод в ГИС
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Увод в ГИС" data-md-level="1">
+        <label class="md-nav__title" for="nav-3">
+          <span class="md-nav__icon md-icon"></span>
+          Увод в ГИС
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../01_preamble/" class="md-nav__link">
+        01. Добре дошли
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../02_introducing_gis/" class="md-nav__link">
+        02. Въведение в ГИС
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../03_vector_data/" class="md-nav__link">
+        02. Векторни данни
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../04_attribute_data/" class="md-nav__link">
+        04. Атрибутивна таблица
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          05. Събиране на данни
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        05. Събиране на данни
+      </a>
+      
+        
+<nav class="md-nav md-nav--secondary" aria-label="Съдържание">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Съдържание
+    </label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    Преглед
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../06_raster_data/" class="md-nav__link">
+        06. Растери
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../07_topology/" class="md-nav__link">
+        07. Топология
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../08_crs/" class="md-nav__link">
+        08. Координатни системи
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../09_map_production/" class="md-nav__link">
+        09. Създаване на карти
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../10_buffers/" class="md-nav__link">
+        10. Анализ с буфери
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../11_interpolation/" class="md-nav__link">
+        11. Анализ с интерполация
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../12_raster_calculator/" class="md-nav__link">
+        12. Анализ на растери
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../98_authors/" class="md-nav__link">
+        12. За авторите
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../99_licence/" class="md-nav__link">
+        13. Лиценз
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="nav-4" type="checkbox" id="nav-4" >
+      
+      <label class="md-nav__link" for="nav-4">
+        БГД кибер
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="БГД кибер" data-md-level="1">
+        <label class="md-nav__title" for="nav-4">
+          <span class="md-nav__icon md-icon"></span>
+          БГД кибер
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../bgd/1000_awesome/" class="md-nav__link">
+        ГИС? Яко!
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../bgd/1000_data/" class="md-nav__link">
+        ГИС данни
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../bgd/1000_terminology/" class="md-nav__link">
+        ГИС термини
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="nav-5" type="checkbox" id="nav-5" >
+      
+      <label class="md-nav__link" for="nav-5">
+        QGIS.бг мета
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="QGIS.бг мета" data-md-level="1">
+        <label class="md-nav__title" for="nav-5">
+          <span class="md-nav__icon md-icon"></span>
+          QGIS.бг мета
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../meta/1000_broken_tutorial/" class="md-nav__link">
+        Какво да направим, ако инструкциите не работят?
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../meta/1000_install_git_windows/" class="md-nav__link">
+        Как да инсталираме git в Windows?
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../meta/1000_install_miniconda_windows/" class="md-nav__link">
+        Как да инсталираме Miniconda в Windows?
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../meta/1000_install_qgis_windows/" class="md-nav__link">
+        Как да инсталираме QGIS в Windows?
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../meta/1000_install_vscode_windows/" class="md-nav__link">
+        Как да инсталираме Visual Studio Code в Windows?
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../meta/1000_markdown/" class="md-nav__link">
+        Markdown в QGIS.бг докс
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../meta/1000_qgisbg_docs_setup_windows/" class="md-nav__link">
+        Как да правим сложни промени в QGIS.бг докс в Windows?
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary" aria-label="Съдържание">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Съдържание
+    </label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    Преглед
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                  <a href="https://github.com/qgisbg/docs/edit/master/docs/gisintro/05_data_capture.md" title="Редактирай тази страница" class="md-content__button md-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25z"/></svg>
+                  </a>
+                
+                
+                <h1 id="_1">Събиране на данни<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h1>
+<h2 id="_2">Преглед<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
+<p>In the previous two topics we looked at vector data. We saw that there
+are two key concepts to vector data, namely: <strong>geometry</strong> and
+<strong>attributes</strong>. The geometry of a vector feature describes its <strong>shape</strong>
+and <strong>position</strong>, while the <strong>attributes</strong> of a vector feature describe
+its <strong>properties</strong> (colour, size, age etc.).</p>
+<p>In this section we will look more closely at the process of creating and
+editing vector data -&mdash; both the geometry and attributes of vector
+features.</p>
+<h1 id="how-does-gis-digital-data-get-stored">How does GIS digital data get stored?<a class="headerlink" href="#how-does-gis-digital-data-get-stored" title="Permanent link">&para;</a></h1>
+<p>Word processors, spreadsheets and graphics packages are all programs
+that let you create and edit digital data. Each type of application
+saves its data into a particular file format. For example, a graphics
+program will let you save your drawing as a <code>.jpg</code>{.interpreted-text
+role=&rdquo;file&rdquo;} JPEG image, word processors let you save your document as
+an <code class="interpreted-text" role="file">.odt</code> OpenDocument or
+<code class="interpreted-text" role="file">.doc</code> Word Document, and so on.</p>
+<p>Just like these other applications, GIS Applications can store their
+data in files on the computer hard disk. There are a number of different
+file formats for GIS data, but the most common one is probably the
+'shape file'. The name is a little odd in that although we call it a
+shape file (singular), it actually consists of at least three different
+files that work together to store your digital vector data, as shown in
+<a href="#table_shapefile">table_shapefile</a>.</p>
+<p>::: {#table_shapefile}</p>
+<hr />
+<p>Extension                  Description</p>
+<hr />
+<p><code>.shp</code>{.interpreted-text   The geometry of vector features are stored in this file
+  role=&rdquo;file&rdquo;}               </p>
+<p><code>.dbf</code>{.interpreted-text   The attributes of vector features are stored in this file
+  role=&rdquo;file&rdquo;}               </p>
+<p><code>.shx</code>{.interpreted-text   This file is an index that helps the GIS Application to find
+  role=&rdquo;file&rdquo;}               features more quickly.</p>
+<hr />
+<p>:::</p>
+<p>Table Shapefile 1: The basic files that together make up a
+'shapefile'.</p>
+<p>When you look at the files that make up a shapefile on the computer hard
+disk, you will see something like <code>figure_shapefile</code>{.interpreted-text
+role=&rdquo;numref&rdquo;}. If you want to share vector data stored in shapefiles
+with another person, it is important to give them all of the files for
+that layer. So in the case of the trees layer shown in
+<code class="interpreted-text" role="numref">figure_shapefile</code>, you would need to
+give the person <code class="interpreted-text" role="file">trees.shp</code>,
+<code class="interpreted-text" role="file">trees.shx</code>,
+<code class="interpreted-text" role="file">trees.dbf</code>,
+<code class="interpreted-text" role="file">trees.prj</code> and
+<code class="interpreted-text" role="file">trees.qml</code>.</p>
+<p>::: {#figure_shapefile}
+<figure class="align-center" width="30em"><img src="../img/shapefile_on_disk.png" /><figcaption>The files that make up a &lsquo;trees&rsquo; shapefile as seen in the computer&rsquo;s
+file manager.</figcaption></figure>
+</p>
+<p>Many GIS Applications are also able to store digital data inside a
+<strong>database</strong>. In general storing GIS data in a database is a good
+solution because the database can store <strong>large amounts</strong> of data
+<strong>efficiently</strong> and can provide data to the GIS Application quickly.
+Using a database also allows many people to work with the same vector
+data layers at the same time. Setting up a database to store GIS data is
+more complicated than using shapefiles, so for this topic we will focus
+on creating and editing shapefiles.</p>
+<h1 id="planning-before-you-begin">Planning before you begin<a class="headerlink" href="#planning-before-you-begin" title="Permanent link">&para;</a></h1>
+<p>Before you can create a new vector layer (which will be stored in a
+shapefile), you need know what the geometry of that layer will be
+(point, polyline or polygon), and you need to know what the attributes
+of that layer will be. Let's look at a few examples and it will become
+clearer how to go about doing this.</p>
+<h2 id="example-1-creating-a-tourism-map">Example 1: Creating a tourism map<a class="headerlink" href="#example-1-creating-a-tourism-map" title="Permanent link">&para;</a></h2>
+<p>Imagine that you want to create a nice tourism map for your local area.
+Your vision of the final map is a 1:50 000 toposheet with markers
+overlaid for sites of interest to tourists. First, let's think about
+the geometry. We know that we can represent a vector layer using point,
+polyline or polygon features. Which one makes the most sense for our
+tourism map? We could use points if we wanted to mark specific locations
+such as look out points, memorials, battle sites and so on. If we wanted
+to take tourists along a route, such as a scenic route through a
+mountain pass, it might make sense to use polylines. If we have whole
+areas that are of tourism interest, such as a nature reserve or a
+cultural village, polygons might make a good choice.</p>
+<p>As you can see it's often not easy to know what type of geometry you
+will need. One common approach to this problem is to make one layer for
+each geometry type you need. So, for example, if you look at digital
+data provided by the Chief Directorate: Surveys and Mapping, South
+Africa, they provide a river areas (polygons) layer and a rivers
+polyline layer. They use the river areas (polygons) to represent river
+stretches that are wide, and they use river polylines to represent
+narrow stretches of river. In <code>figure_tourism</code>{.interpreted-text
+role=&rdquo;numref&rdquo;} we can see how our tourism layers might look on a map if
+we used all three geometry types.</p>
+<p>::: {#figure_tourism}
+<figure class="align-center" width="30em"><img src="../img/tourism_map.png" /><figcaption>A map with tourism layers. We have used three different geometry types
+for tourism data so that we can properly represent the different kinds
+of features needed for our visitors, giving them all the information
+they need.</figcaption></figure>
+</p>
+<h2 id="example-2-creating-a-map-of-pollution-levels-along-a-river">Example 2: Creating a map of pollution levels along a river<a class="headerlink" href="#example-2-creating-a-map-of-pollution-levels-along-a-river" title="Permanent link">&para;</a></h2>
+<p>If you wanted to measure pollution levels along the course of a river
+you would typically travel along the river in a boat or walk along its
+banks. At regular intervals you would stop and take various measurements
+such as Dissolved Oxygen (DO) levels, Coliform Bacteria (CB) counts,
+Turbidity levels and pH. You would also need to make a map reading of
+your position or obtain your position using a GPS receiver.</p>
+<p>To store the data collected from an exercise like this in a GIS
+Application, you would probably create a GIS layer with a point
+geometry. Using point geometry makes sense here because each sample
+taken represents the conditions at a very specific place.</p>
+<p>For the attributes we would want a <strong>field</strong> for each thing that
+describes the sample site. So we may end up with an attribute table that
+looks something like
+<a href="#table_river_attributes">table_river_attributes</a>.</p>
+<p>::: {#table_river_attributes}</p>
+<hr />
+<p>SampleNo   pH    DO   CB   Turbidity   Collector   Date</p>
+<hr />
+<p>1          7     6    N    Low         Patience    12/01/2009</p>
+<p>2          6.8   5    Y    Medium      Thabo       12/01/2009</p>
+<p>3          6.9   6    Y    High        Victor      12/01/2009</p>
+<hr />
+<p>:::</p>
+<p>Table River Attributes 1: Drawing a table like this before you create
+your vector layer will let you decide what attribute fields (columns)
+you will need. Note that the geometry (positions where samples were
+taken) is not shown in the attribute table -&mdash; the GIS Application
+stores it separately!</p>
+<h1 id="creating-an-empty-shapefile">Creating an empty shapefile<a class="headerlink" href="#creating-an-empty-shapefile" title="Permanent link">&para;</a></h1>
+<p>Once you have planned what features you want to capture into the GIS,
+and the geometry type and attributes that each feature should have, you
+can move on to the next step of creating an empty shapefile.</p>
+<p>The process usually starts with choosing the 'new vector layer' option
+in your GIS Application and then selecting a geometry type (see
+<code class="interpreted-text" role="numref">figure_new_shapefile</code>). As we covered
+in an earlier topic, this means choosing either point, polyline or
+polygon for the geometry.</p>
+<p>::: {#figure_new_shapefile}
+<figure class="align-center" width="30em"><img src="../img/new_shapefile.png" /><figcaption>Creating a new vector layer is as simple as filling in a few details
+in a form. First you choose the geometry type, and then you add the
+attribute fields.</figcaption></figure>
+</p>
+<p>Next you will add fields to the attribute table. Normally we give field
+names that are short, have no spaces and indicate what type of
+information is being stored in that field. Example field names may be
+'pH', 'RoofColour', 'RoadType' and so on. As well as choosing a
+name for each field, you need to indicate how the information should be
+stored in that field &ndash;-- i.e. is it a number, a word or a sentence, or
+a date?</p>
+<p>Computer programs usually call information that is made up of words or
+sentences '<strong>strings</strong>', so if you need to store something like a
+street name or the name of a river, you should use 'String' for the
+field type.</p>
+<p>The shapefile format allows you to store the numeric field information
+as either a whole number (<strong>integer</strong>) or a decimal number (<strong>floating
+point</strong>) &ndash;-- so you need to think before hand whether the numeric data
+you are going to capture will have decimal places or not.</p>
+<p>The final step (as shown in <code>figure_save_shapefile</code>{.interpreted-text
+role=&rdquo;numref&rdquo;}) for creating a shapefile is to give it a name and a
+place on the computer hard disk where it should be created. Once again
+it is a good idea to give the shapefile a short and meaningful name.
+Good examples are 'rivers', 'watersamples' and so on.</p>
+<p>::: {#figure_save_shapefile}
+<figure class="align-center" width="30em"><img src="../img/save_shapefile.png" /><figcaption>After defining our new layer&rsquo;s geometry and attributes, we need to
+save it to disk. It is important to give a short but meaningful name to
+your shapefile.</figcaption></figure>
+</p>
+<p>Let's recap the process again quickly. To create a shapefile you first
+say what kind of geometry it will hold, then you create one or more
+fields for the attribute table, and then you save the shapefile to the
+hard disk using an easy to recognise name. Easy as 1-2-3!</p>
+<h1 id="adding-data-to-your-shapefile">Adding data to your shapefile<a class="headerlink" href="#adding-data-to-your-shapefile" title="Permanent link">&para;</a></h1>
+<p>So far we have only created an empty shapefile. Now we need to enable
+editing in the shapefile using the 'enable editing' menu option or
+tool bar icon in the GIS Application. Shapefiles are not enabled for
+editing by default to prevent accidentally changing or deleting the data
+they contain. Next we need to start adding data. There are two steps we
+need to complete for each record we add to the shapefile:</p>
+<ol>
+<li>Capturing geometry</li>
+<li>Entering attributes</li>
+</ol>
+<p>The process of capturing geometry is different for points, polylines and
+polygons.</p>
+<p>To <strong>capture a point</strong>, you first use the map pan and zoom tools to get
+to the correct geographical area that you are going to be recording data
+for. Next you will need to enable the point capture tool. Having done
+that, the next place you click with the <strong>left mouse button</strong> in the map
+view, is where you want your new point <strong>geometry</strong> to appear. After you
+click on the map, a window will appear and you can enter all of the
+<strong>attribute data</strong> for that point (see
+<code class="interpreted-text" role="numref">figure_attribute_dialog</code>). If you are
+unsure of the data for a given field you can usually leave it blank, but
+be aware that if you leave a lot of fields blank it will be hard to make
+a useful map from your data!</p>
+<p>::: {#figure_attribute_dialog}
+<figure class="align-center" width="30em"><img src="../img/attribute_dialog.png" /><figcaption>After you have captured the point geometry, you will be asked to
+describe its attributes. The attribute form is based on the fields you
+specified when you created the vector
+layer.</figcaption></figure>
+</p>
+<p>To <strong>capture a polyline</strong> the process is similar to that of a point, in
+that you need to first use the pan and zoom tools to move the map in the
+map view to the correct geographical area. You should be zoomed in
+enough so that your new vector polyline feature will have an appropriate
+scale (see <code class="interpreted-text" role="ref">gentle_gis_vector_data</code> for
+more details on scale issues). When you are ready, you can click the
+polyline capture icon in the tool bar and then start drawing your line
+by clicking on the map. After you make your first click, you will notice
+that the line stretches like an elastic band to follow the mouse cursor
+around as you move it. Each time you click with the <strong>left mouse
+button</strong>, a new vertex will be added to the map. This process is shown
+in <code class="interpreted-text" role="numref">figure_capture_polyline</code>.</p>
+<p>::: {#figure_capture_polyline}
+<figure class="align-center" width="30em"><img src="../img/capture_polyline.png" /><figcaption>Capturing lines for a tourism map. When editing a line layer, the
+vertices are shown with circular markers which you can move about with
+the mouse to adjust the line's geometry. When adding a new line (shown
+in red), each click of the mouse will add a new
+vertex.</figcaption></figure>
+</p>
+<p>When you have finished defining your line, use the <strong>right mouse
+button</strong> to tell the GIS Application that you have completed your edits.
+As with the procedure for capturing a point feature, you will then be
+asked to enter in the attribute data for your new polyline feature.</p>
+<p>The process for <strong>capturing a polygon</strong> is almost the same as capturing
+a polyline except that you need to use the polygon capture tool in the
+toolbar. Also, you will notice that when you draw your geometry on the
+screen, the GIS Application always creates an enclosed area.</p>
+<p>To add a new feature after you have created your first one, you can
+simply click again on the map with the point, polyline or polygon
+capture tool active and start to draw your next feature.</p>
+<p>When you have no more features to add, always be sure to click the
+'allow editing' icon to toggle it off. The GIS Application will then
+save your newly created layer to the hard disk.</p>
+<h1 id="heads-up-digitising">Heads-up digitising<a class="headerlink" href="#heads-up-digitising" title="Permanent link">&para;</a></h1>
+<p>As you have probably discovered by now if you followed the steps above,
+it is pretty hard to draw the features so that they are <strong>spatially
+correct</strong> if you do not have other features that you can use as a point
+of reference. One common solution to this problem is to use a raster
+layer (such as an aerial photograph or a satellite image) as a backdrop
+layer. You can then use this layer as a reference map, or even trace the
+features off the raster layer into your vector layer if they are
+visible. This process is known as 'heads-up digitising' and is shown
+in <code class="interpreted-text" role="numref">figure_headsup_digitizing</code>.</p>
+<p>::: {#figure_headsup_digitizing}
+<figure class="align-center" width="30em"><img src="../img/headsup_digitizing.png" /><figcaption>Heads-up digitising using a satellite image as a backdrop. The image
+is used as a reference for capturing polyline features by tracing over
+them.</figcaption></figure>
+</p>
+<h1 id="digitising-using-a-digitising-table">Digitising using a digitising table<a class="headerlink" href="#digitising-using-a-digitising-table" title="Permanent link">&para;</a></h1>
+<p>Another method of capturing vector data is to use a digitising table.
+This approach is less commonly used except by GIS professionals, and it
+requires expensive equipment. The process of using a digitising table,
+is to place a paper map on the table. The paper map is held securely in
+place using clips. Then a special device called a 'puck' is used to
+trace features from the map. Tiny cross-hairs in the puck are used to
+ensure that lines and points are drawn accurately. The puck is connected
+to a computer and each feature that is captured using the puck gets
+stored in the computer's memory. You can see what a digitising puck
+looks like in <code>figure_digitizing_table</code>{.interpreted-text
+role=&rdquo;numref&rdquo;}.</p>
+<p>::: {#figure_digitizing_table}
+<figure class="align-center" width="30em"><img src="../img/digitizing_table.jpg" /><figcaption>A digitising table and puck are used by GIS professionals when they
+want to digitise features from existing
+maps.</figcaption></figure>
+</p>
+<h1 id="after-your-features-are-digitised">After your features are digitised...<a class="headerlink" href="#after-your-features-are-digitised" title="Permanent link">&para;</a></h1>
+<p>Once your features are digitised, you can use the techniques you learned
+in the previous topic to set the symbology for your layer. Choosing an
+appropriate symbology will allow you to better understand the data you
+have captured when you look at the map.</p>
+<h1 id="common-problems-things-to-be-aware-of">Common problems / things to be aware of<a class="headerlink" href="#common-problems-things-to-be-aware-of" title="Permanent link">&para;</a></h1>
+<p>If you are digitising using a backdrop raster layer such as an aerial
+photograph or satellite image, it is very important that the raster
+layer is properly georeferenced. A layer that is georeferenced properly
+displays in the correct position in the map view based on the GIS
+Application's internal model of the Earth. We can see the effect of a
+poorly georeferenced image in
+<code class="interpreted-text" role="numref">figure_georeference_issue</code>.</p>
+<p>::: {#figure_georeference_issue}
+<figure><img src="../img/georeferencing_issue.png" /><figcaption>The importance of using properly georeferenced raster images for
+heads-up digitising. On the left we can see the image is properly
+georegistered and the road features (in orange) overlap perfectly. If
+the image is poorly georeferenced (as shown on the right) the features
+will not be well aligned. Worse still, if the image on the right is used
+as a reference when capturing new features, the newly captured data will
+be inaccurate!</figcaption>
+</figure>{.align-center
+width=&rdquo;30em&rdquo;}
+:::</p>
+<p>Also remember that it is important that you are zoomed in to an
+appropriate scale so that the vector features you create are useful. As
+we saw in the previous topic on vector geometry, it is a bad idea to
+digitise your data when you are zoomed out to a scale of 1:1000 000 if
+you intend to use the data you capture at a scale of 1:50 000 later.</p>
+<h1 id="what-have-we-learned">What have we learned?<a class="headerlink" href="#what-have-we-learned" title="Permanent link">&para;</a></h1>
+<p>Let's wrap up what we covered in this worksheet:</p>
+<ul>
+<li><strong>Digitising</strong> is the process of capturing knowledge of a feature's
+    <strong>geometry</strong> and <strong>attributes</strong> into a <strong>digital format</strong> stored on
+    the computer's disk.</li>
+<li>GIS Data can be stored in a <strong>database</strong> or as <strong>files</strong>.</li>
+<li>One commonly used file format is the <strong>shapefile</strong> which is actually
+    a group of three or more files (<code>.shp</code>{.interpreted-text
+    role=&rdquo;file&rdquo;}, <code class="interpreted-text" role="file">.dbf</code> and
+    <code class="interpreted-text" role="file">.shx</code>).</li>
+<li>Before you create a new vector layer you need to plan both what
+    <strong>geometry</strong> type and <strong>attribute</strong> fields it will contain.</li>
+<li>Geometry can be point, polyline or polygon.</li>
+<li>Attributes can be <strong>integers</strong> (whole numbers), <strong>floating points</strong>
+    (decimal numbers), <strong>strings</strong> (words) or <strong>dates</strong>.</li>
+<li>The digitising process consists of <strong>drawing</strong> the geometry in the
+    map view and then entering its attributes. This is repeated for each
+    feature.</li>
+<li><strong>Heads-up digitising</strong> is often used to provide orientation during
+    digitising by using a raster image in the background.</li>
+<li>Professional GIS users sometimes use a <strong>digitising table</strong> to
+    capture information from paper maps.</li>
+</ul>
+<h1 id="now-you-try">Now you try!<a class="headerlink" href="#now-you-try" title="Permanent link">&para;</a></h1>
+<p>Here are some ideas for you to try with your learners:</p>
+<ul>
+<li>Draw up a list of features in and around your school that you think
+    would be interesting to capture. For example: the school boundary,
+    the position of fire assembly points, the layout of each class room,
+    and so on. Try to use a mix of different geometry types. Now split
+    your learners into groups and assign each group a few features to
+    capture. Have them symbolise their layers so that they are more
+    meaningful to look at. Combine the layers from all the groups to
+    create a nice map of your school and its surroundings!</li>
+<li>Find a local river and take water samples along its length. Make a
+    careful note of the position of each sample using a GPS or by
+    marking it on a toposheet. For each sample take measurements such as
+    pH, dissolved oxygen etc. Capture the data using the GIS application
+    and make maps that show the samples with a suitable symbology. Could
+    you identify any areas of concern? Was the GIS Application able to
+    help you to identify these areas?</li>
+</ul>
+<h1 id="something-to-think-about">Something to think about<a class="headerlink" href="#something-to-think-about" title="Permanent link">&para;</a></h1>
+<p>If you don't have a computer available, you can follow the same process
+by using transparency sheets and a notebook. Use an aerial photo,
+orthosheet or satellite image printout as your background layer. Draw
+columns down the page in your notebook and write in the column headings
+for each attribute field you want to store information about. Now trace
+the geometry of features onto the transparency sheet, writing a number
+next to each feature so that it can be identified. Now write the same
+number in the first column in your table in your notebook, and then fill
+in all the additional information you want to record.</p>
+<h1 id="further-reading">Further reading<a class="headerlink" href="#further-reading" title="Permanent link">&para;</a></h1>
+<p>The QGIS User Guide has more detailed information on
+<code class="interpreted-text" role="ref">digitising vector data
+&lt;editingvector&gt;</code> in QGIS.</p>
+<h1 id="whats-next">What's next?<a class="headerlink" href="#whats-next" title="Permanent link">&para;</a></h1>
+<p>In the section that follows we will take a closer look at <strong>raster
+data</strong> to learn all about how image data can be used in a GIS.</p>
+                
+                  
+                
+              
+              
+                
+
+
+              
+            </article>
+          </div>
+        </div>
+      </main>
+      
+        
+<footer class="md-footer">
+  
+    <div class="md-footer-nav">
+      <nav class="md-footer-nav__inner md-grid" aria-label="Долен колонтитул">
+        
+          <a href="../04_attribute_data/" class="md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+            <div class="md-footer-nav__button md-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+            </div>
+            <div class="md-footer-nav__title">
+              <div class="md-ellipsis">
+                <span class="md-footer-nav__direction">
+                  Предишна
+                </span>
+                04. Атрибутивна таблица
+              </div>
+            </div>
+          </a>
+        
+        
+          <a href="../06_raster_data/" class="md-footer-nav__link md-footer-nav__link--next" rel="next">
+            <div class="md-footer-nav__title">
+              <div class="md-ellipsis">
+                <span class="md-footer-nav__direction">
+                  Следваща
+                </span>
+                06. Растери
+              </div>
+            </div>
+            <div class="md-footer-nav__button md-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    </div>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+        Made with
+        <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+          Material for MkDocs
+        </a>
+      </div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    
+      <script src="../../assets/javascripts/vendor.53cc9318.min.js"></script>
+      <script src="../../assets/javascripts/bundle.e9c9f54f.min.js"></script><script id="__lang" type="application/json">{"clipboard.copy": "\u041a\u043e\u043f\u0438\u0440\u0430\u0439", "clipboard.copied": "\u041a\u043e\u043f\u0438\u0440\u0430\u043d\u043e", "search.config.lang": "ru", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "\u0422\u044a\u0440\u0441\u0438", "search.result.placeholder": "\u0417\u0430\u043f\u043e\u0447\u043d\u0435\u0442\u0435 \u0434\u0430 \u043f\u0438\u0448\u0435\u0442\u0435, \u0437\u0430 \u0434\u0430 \u0442\u044a\u0440\u0441\u0438\u0442\u0435", "search.result.none": "\u041d\u044f\u043c\u0430 \u0440\u0435\u0437\u0443\u043b\u0442\u0430\u0442\u0438", "search.result.one": "1 \u0440\u0435\u0437\u0443\u043b\u0442\u0430\u0442", "search.result.other": "# \u0440\u0435\u0437\u0443\u043b\u0442\u0430\u0442\u0430", "search.result.more.one": "\u043e\u0449\u0435 1 \u043d\u0430 \u0442\u0430\u0437\u0438 \u0441\u0442\u0440\u0430\u043d\u0438\u0446\u0430", "search.result.more.other": "\u043e\u0449\u0435 # \u043d\u0430 \u0442\u0430\u0437\u0438 \u0441\u0442\u0440\u0430\u043d\u0438\u0446\u0430", "search.result.term.missing": "Missing"}</script>
+      
+      <script>
+        app = initialize({
+          base: "../..",
+          features: ['navigation.instant', 'navigation.tabs', 'search.suggest', 'search.highlight', 'search.share'],
+          search: Object.assign({
+            worker: "../../assets/javascripts/worker/search.9c0e82ba.min.js"
+          }, typeof search !== "undefined" && search)
+        })
+      </script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/cookies-eu-banner@2.0.1/dist/cookies-eu-banner.js"></script>
+      
+        <script src="../../assets/consent.js"></script>
+      
+    
+  </body>
+</html>
